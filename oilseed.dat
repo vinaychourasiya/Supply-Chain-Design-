@@ -1,0 +1,107 @@
+set GrowingArea := G1,G2,G3,G4,G5,G6,G7,G8;
+set TechPlant :=   G1,  G2,  G3,  G4,  G5,  G6,  G7,  G8;
+set ExtractPlant := E1,E2;
+set Tech := T1,T2,T3;
+set ExTech:= L,M,H;
+set K:=   G1,  G2,  G3,  G4,  G5,  G6,  G7,  G8,E1;
+
+param TechCap:=
+	T1 6000
+	T2 6000
+	T3 12000;
+
+param TechFixedCost:=
+	T1 875000	
+	T2 500000	
+	T3 625000;
+
+param TechProcessCost:=
+	T1 500	
+	T2 380	
+	T3 320;
+
+
+param TechOil:=
+	T1 250	
+	T2 150	
+	T3 166;
+
+param TechSeedCake:=
+	T1 750	
+	T2 850	
+	T3 834;
+
+param TechSCoilPer:=
+	T1 0.075	
+	T2 0.125	
+	T3 0.16;
+
+
+param ExTechCap:=
+	L 9000
+	M 30000
+	H 150000;
+	
+
+param ExTechFixedCost:=
+	L 625000	
+	M 1500000	
+	H 6000000;
+	
+param ExTechProcessCost:=
+	L 445	
+	M 415	
+	H 400;
+	
+
+param CostTechmat:
+	  G1   G2   G3   G4   G5   G6   G7   G8:=
+G1	0	200	450	450	200	400	150	250	
+G2	200	0	300	300	300	150	300	300	
+G3	450	300	0	50	300	100	450	200
+G4	450	300	50	0	200	200	400	150	
+G5	200	300	300	200	0	400	200	100	
+G6	400	150	100	200	400	0	450	350	
+G7	150	300	450	400	200	450	0	300	
+G8	250	300	200	150	100	350	300	0;
+
+
+param OilTransport:
+	  G1   G2   G3   G4   G5   G6   G7   G8 E1:=
+  G1	0	200	450	450	200	400	150	250	300
+  G2	200	0	300	300	300	150	300	300	150
+  G3	450	300	0	50	300	100	450	200 200
+  G4	450	300	50	0	200	200	400	150	180
+  G5	200	300	300	200	0	400	200	100	300
+  G6	400	150	100	200	400	0	450	350	200
+  G7	150	300	450	400	200	450	0	300	400
+  G8	250	300	200	150	100	350	300	0 	300;
+
+
+param OilTransport2:=
+  G1		600
+  G2		600
+  G3		700
+  G4		500
+  G5		500
+  G6		900
+  G7		800
+  G8		600
+E1		600;	
+
+param CostExTechmat:
+	E1	E2:=
+  G1	300	600
+  G2	150	600
+  G3	200	700
+  G4	180	500
+  G5	300	500
+  G6	200	900
+  G7	400	800
+  G8	300	600;
+
+
+
+
+
+

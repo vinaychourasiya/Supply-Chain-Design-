@@ -1,0 +1,8 @@
+reset;
+model oilseednl.mod;
+data oilseednl.dat;
+option solver baron;
+printf "\n please wait answer is evaluating ";
+solve;
+display _nvars,_ncons;
+display x;

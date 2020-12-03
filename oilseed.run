@@ -1,0 +1,77 @@
+reset;
+model oilseed.mod;
+data oilseed.dat;
+option solver gurobi;
+solve;
+#for 
+#display x,U,z,y;
+
+printf "\n";
+
+
+{
+        for {i in TechPlant}
+        {
+                for {t in Tech}
+			        { 
+				 if  x[t,i] > 0 then
+                        	 printf "oil processing plant technology %s at growing area %s \n" , t,i;
+				}
+			#printf ""
+			     
+        }
+}
+
+printf "\n";
+
+{
+        for {t in Tech}
+        {
+                for {i in TechPlant}
+			{
+
+                	for {g in GrowingArea}
+				{
+				 if  U[t,i,g] > 0 then
+                        	 printf "oilseed from %s going to oil technology plant %s  \n", g,i;
+				}
+			
+			}      
+        }
+}
+
+printf "\n";
+
+
+{
+        for {i in ExtractPlant}
+        {
+                for {t in ExTech}
+			        { 
+				 if  y[t,i] > 0 then
+                        	 printf "Extraction plant of level %s at location  %s \n" , t,i;
+				}
+			#printf ""
+			     
+        }
+}
+
+printf "\n";
+
+{
+        for {t in TechPlant}
+        {
+                for {i in ExtractPlant}
+			{
+
+                	for {g in ExTech}
+				{
+				 if  z[g,i,t] > 1 then
+                        	 printf "%s tonnes seed cake going from oil technology plant %s to extraction plant %s  \n", z[g,i,t],t,i;
+				}
+			
+			}      
+        }
+}
+
+
